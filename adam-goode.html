@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adam Goode — Inter Edition</title>
+<style>
+  :root {
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+    color: #202020;
+    background: #fdfdfb;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behaviour: smooth;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .wrap {
+    width: 690px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 28px 20px 65px;
+  }
+
+  a {
+    color: #003fbd;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:visited {
+    color: #63368e;
+  }
+
+  a:hover {
+    color: #111;
+    background: #fff6b8;
+  }
+
+  a:focus-visible {
+    outline: 2px solid #003fbd;
+    outline-offset: 3px;
+  }
+
+  .mono,
+  .path,
+  .meta {
+    font: 12px/1.65 "Courier New", Courier, monospace;
+  }
+
+  .muted,
+  .meta {
+    color: #696969;
+  }
+
+  .path {
+    color: #555;
+    margin-bottom: 18px;
+  }
+
+  .topline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 9px;
+    border-top: 3px double #555;
+  }
+
+  h1 {
+    margin: 13px 0 8px;
+    font-size: 39px;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    font-weight: 500;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+  }
+
+  h3 {
+    margin: 26px 0 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0 0 15px;
+  }
+
+  .intro {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .dot {
+    color: #003fbd;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    padding: 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: #fff;
+  }
+
+  hr {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid #aaa;
+  }
+
+  .eyebrow {
+    margin-bottom: 9px;
+    color: #666;
+    font: 11px "Courier New", monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .directory {
+    margin-top: 17px;
+    border-top: 1px dotted #999;
+  }
+
+  .file {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px dotted #aaa;
+  }
+
+  .filetype {
+    padding-top: 3px;
+    color: #666;
+    font: 11px/1.5 "Courier New", monospace;
+  }
+
+  .file strong {
+    font-size: 15px;
+  }
+
+  .file p {
+    margin: 4px 0 0;
+    color: #5c5c5c;
+    font-size: 13px;
+  }
+
+  .note {
+    margin: 24px 0;
+    padding: 3px 0 3px 13px;
+    border-left: 3px solid #003fbd;
+    color: #444;
+    font-size: 13px;
+  }
+
+  .case {
+    display: none;
+  }
+
+  .case:target {
+    display: block;
+  }
+
+  body:has(.case:target) #home {
+    display: none;
+  }
+
+  .case h1 {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .case .intro {
+    font-size: 16px;
+  }
+
+  .case h2 {
+    margin-top: 25px;
+    font-size: 18px;
+  }
+
+  .case .topline {
+    margin-bottom: 22px;
+  }
+
+  .figure {
+    margin: 25px 0;
+    padding: 20px;
+    border: 1px solid #b8b8b8;
+    background: #f1f1ed;
+  }
+
+  .figure figcaption {
+    margin-top: 13px;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .placeholder {
+    max-width: 410px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #999;
+    background: white;
+    font-size: 13px;
+  }
+
+  .placeholder .line {
+    height: 8px;
+    margin: 11px 0;
+    background: #ddd;
+  }
+
+  .placeholder .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 14px;
+    border: 1px solid #888;
+    background: #ddd;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .stamp {
+    display: inline-block;
+    padding: 2px 7px;
+    border: 1px solid #777;
+    color: #555;
+    font: 11px "Courier New", monospace;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 500px) {
+    .wrap {
+      padding: 22px 18px 48px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    .file {
+      grid-template-columns: 65px 1fr;
+      gap: 10px;
+    }
+
+    .case h1 {
+      font-size: 27px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behaviour: auto;
+    }
+  }
+</style>
+</head>
+<body><main class="wrap">
+<section id="home">
+<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>PERSONAL HOMEPAGE / EST. 2026</span></div>
+<h1>Adam Goode<span class="dot">.</span></h1>
+<p class="intro">I design things for screens, paper and the people on the other side of them.</p>
+<nav aria-label="Main navigation"><a href="#about">About me</a><a href="#work">Selected work</a><a href="#contact">Say hello</a></nav>
+<hr>
+<section id="about"><div class="eyebrow">01 / README.TXT</div><h2>Hello, I'm Adam.</h2><p>I've been designing for over 14 years, working across print, websites and digital products.</p><p>I like the visual side of design. The details, the type, the bits that make something feel right. But I also like working out why something isn't working, and making it simpler.</p><p>These days, I work on digital experiences at the West Brom Building Society. Before that, I worked at <i>Clevercherry</i> as <i>Head of Design</i>, designing a bit of everything.</p></section>
+<hr>
+<section id="work" style="margin-top:40px"><div class="eyebrow">02 / DIRECTORY OF WORK</div><h2>A few things I've made better.</h2><p>Not everything I've designed. Just a few things worth talking about.</p>
+<div class="directory">
+<div class="file"><span class="filetype">01 / HTML</span><div><a href="#savings"><strong>The New West Brom app</strong></a><p>West Brom — Savings journeys, interfaces and the little decisions that add up.</p></div></div>
+<div class="file"><span class="filetype">02 / HTML</span><div><a href="#mortgage"><strong>West Brom Mortgage Tracker redesign</strong></a><p>West Brom — Helping people know what's happening, and what happens next.</p></div></div>
+<div class="file"><span class="filetype">03 / HTML</span><div><a href="#agency"><strong>West Brom Savings Account redesign</strong></a><p>Clevercherry — Brands, websites, print and learning to make things look properly good.</p></div></div>
+</div>
+
+<hr>
+
+<section id="contact"><div class="eyebrow">03 / CONTACT.TXT</div><h2>You've reached the bottom.</h2><p>Thanks for having a look. If you'd like to talk about a project, a role, or something I've worked on, <a href="mailto:adam-goode@hotmail.co.uk">send me an email</a>.</p></section>
+<hr><footer class="footer meta"><span>© Adam Goode, 2026</span><span class="stamp">LAST UPDATED: OCT 2026</span></footer>
+</section>
+<section class="case" id="savings"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 01</span></div><div class="path"><a href="#home">Home</a> / work / savings.html</div><h1>Making savings less complicated.</h1><p class="intro">Designing a clearer way to explore, open and manage savings accounts online.</p><p class="meta">WEST BROM / UX + UI / CASE STUDY</p><hr><h2>The problem</h2><p>Savings products come with rules, eligibility criteria and important information. The challenge was to help people understand their options and move through a digital journey confidently.</p><h2>What I did</h2><p>Worked across user journeys, interface concepts, content hierarchy, accessible patterns and reusable components.</p><figure class="figure"><div class="placeholder"><strong>Choose a savings account</strong><div class="line" style="width:75%"></div><div class="line" style="width:96%"></div><div class="line" style="width:70%"></div><span class="btn">Continue →</span></div><figcaption>Space for a real screenshot. Explain the decision, not just what the screen looks like.</figcaption></figure><h2>What changed?</h2><p>Add a real before-and-after, testing observation or design outcome here. No invented percentages required.</p><hr><a class="back" href="#home">← Back to the homepage</a></section>
+<section class="case" id="mortgage"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 02</span></div><div class="path"><a href="#home">Home</a> / work / mortgage.html</div><h1>Where's my mortgage up to?</h1><p class="intro">Making a complicated process feel a little less mysterious.</p><p class="meta">WEST BROM / UX + UI / CASE STUDY</p><hr><h2>The problem</h2><p>There are a lot of steps in a mortgage application. People want to know where they stand and whether there's anything they need to do.</p><h2>What I did</h2><p>Explored progress patterns, clearer status labels and the hierarchy of information at each stage.</p><figure class="figure"><div class="placeholder"><strong>Your application</strong><p style="margin:13px 0 4px">✓ Application received</p><p style="margin:0 0 4px">✓ Documents reviewed</p><p style="margin:0">○ Next steps</p></div><figcaption>Illustrative placeholder for your real tracker screens and design iterations.</figcaption></figure><h2>What changed?</h2><p>Show what you learnt from research or testing, how the interface evolved and the result.</p><hr><a class="back" href="#home">← Back to the homepage</a></section>
+<section class="case" id="agency"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 03</span></div><div class="path"><a href="#home">Home</a> / work / clevercherry.html</div><h1>Before all the UX acronyms.</h1><p class="intro">A bit of everything, and a lot of learning.</p><p class="meta">CLEVERCHERRY / VISUAL DESIGN + WEB + PRINT</p><hr><h2>The work</h2><p>At Clevercherry I worked across websites, visual identities, print and digital design, honing my craft alongside more experienced designers.</p><h2>The good stuff</h2><p>Put your strongest two or three projects here, with big images and short explanations of the thinking behind them.</p><figure class="figure"><div class="placeholder"><strong>Selected visual project</strong><div class="line" style="width:85%"></div><div class="line" style="width:65%"></div></div><figcaption>Replace with a genuine project image.</figcaption></figure><hr><a class="back" href="#home">← Back to the homepage</a></section>
+</main></body></html>
