@@ -22,6 +22,7 @@
 
   body {
     margin: 0;
+    cursor: url("retro-cursor.svg") 2 1, auto;
   }
 
   .wrap {
@@ -33,6 +34,7 @@
 
   a {
     color: #003fbd;
+    cursor: url("retro-cursor.svg") 2 1, pointer;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -104,6 +106,11 @@
   .intro {
     font-size: 16px;
     margin-bottom: 0;
+  }
+
+  .casestudyintro {
+    font-size: 16px;
+    margin-bottom: 24px;
   }
 
   .dot {
@@ -197,6 +204,130 @@
     font-size: 18px;
   }
 
+  .case h3 {
+    margin-top: 22px;
+  }
+
+  .case ul {
+    margin: 0 0 18px;
+    padding-left: 22px;
+  }
+
+  .case li {
+    margin-bottom: 7px;
+  }
+
+  .case-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 25px 0;
+    border: 1px solid #aaa;
+    background: #aaa;
+  }
+
+  .case-summary div {
+    padding: 15px;
+    background: #fdfdfb;
+  }
+
+  .case-summary dt {
+    margin-bottom: 5px;
+    color: #666;
+    font: 11px "Courier New", monospace;
+    text-transform: uppercase;
+  }
+
+  .case-summary dd {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .case-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0 25px;
+  }
+
+  .case-image {
+    margin: 0;
+  }
+
+  .case-image-link {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid #999;
+    background: #f1f1ed;
+    cursor: zoom-in;
+  }
+
+  .case-image-link::after {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    padding: 4px 7px;
+    border: 1px solid #777;
+    background: #fdfdfb;
+    color: #333;
+    content: "VIEW FULL WIDTH ↗";
+    font: 10px "Courier New", monospace;
+  }
+
+  .case-image-link img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .case-image figcaption {
+    margin-top: 9px;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .case-images-mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-mobile-scroll {
+    height: 420px;
+    overflow-y: auto;
+    border: 1px solid #999;
+    background: #f1f1ed;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .case-mobile-scroll img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .comparison {
+    width: 100%;
+    margin: 20px 0 25px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .comparison th,
+  .comparison td {
+    padding: 11px 12px;
+    border: 1px solid #aaa;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .comparison th {
+    background: #f1f1ed;
+  }
+
   .case .topline {
     margin-bottom: 22px;
   }
@@ -274,6 +405,23 @@
     .case h1 {
       font-size: 27px;
     }
+
+    .case-summary {
+      grid-template-columns: 1fr;
+    }
+
+    .case-images {
+      grid-template-columns: 1fr;
+    }
+
+    .case-images-mobile {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .comparison {
+      display: block;
+      overflow-x: auto;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -294,17 +442,154 @@
 <hr>
 <section id="work" style="margin-top:40px"><div class="eyebrow">02 / DIRECTORY OF WORK</div><h2>A few things I've made better.</h2><p>Not everything I've designed. Just a few things worth talking about.</p>
 <div class="directory">
-<div class="file"><span class="filetype">01 / HTML</span><div><a href="#savings"><strong>The New West Brom app</strong></a><p>West Brom — Savings journeys, interfaces and the little decisions that add up.</p></div></div>
-<div class="file"><span class="filetype">02 / HTML</span><div><a href="#mortgage"><strong>West Brom Mortgage Tracker redesign</strong></a><p>West Brom — Helping people know what's happening, and what happens next.</p></div></div>
-<div class="file"><span class="filetype">03 / HTML</span><div><a href="#agency"><strong>West Brom Savings Account redesign</strong></a><p>Clevercherry — Brands, websites, print and learning to make things look properly good.</p></div></div>
+<div class="file"><span class="filetype">01 / HTML</span><div><a href="#savings">The New West Brom app</a><p>West Brom — Onboarding, accounts and everyday banking across mobile and desktop.</p></div></div>
+<div class="file"><span class="filetype">02 / HTML</span><div><a href="#mortgage">West Brom Mortgage Tracker redesign</a><p>West Brom — Helping people know what's happening, and what happens next.</p></div></div>
+<div class="file"><span class="filetype">03 / HTML</span><div><a href="#agency">West Brom Savings Account redesign</a><p>Clevercherry — Brands, websites, print and learning to make things look properly good.</p></div></div>
 </div>
+</section>
 
 <hr>
 
 <section id="contact"><div class="eyebrow">03 / CONTACT.TXT</div><h2>You've reached the bottom.</h2><p>Thanks for having a look. If you'd like to talk about a project, a role, or something I've worked on, <a href="mailto:adam-goode@hotmail.co.uk">send me an email</a>.</p></section>
 <hr><footer class="footer meta"><span>© Adam Goode, 2026</span><span class="stamp">LAST UPDATED: OCT 2026</span></footer>
 </section>
-<section class="case" id="savings"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 01</span></div><div class="path"><a href="#home">Home</a> / work / savings.html</div><h1>Making savings less complicated.</h1><p class="intro">Designing a clearer way to explore, open and manage savings accounts online.</p><p class="meta">WEST BROM / UX + UI / CASE STUDY</p><hr><h2>The problem</h2><p>Savings products come with rules, eligibility criteria and important information. The challenge was to help people understand their options and move through a digital journey confidently.</p><h2>What I did</h2><p>Worked across user journeys, interface concepts, content hierarchy, accessible patterns and reusable components.</p><figure class="figure"><div class="placeholder"><strong>Choose a savings account</strong><div class="line" style="width:75%"></div><div class="line" style="width:96%"></div><div class="line" style="width:70%"></div><span class="btn">Continue →</span></div><figcaption>Space for a real screenshot. Explain the decision, not just what the screen looks like.</figcaption></figure><h2>What changed?</h2><p>Add a real before-and-after, testing observation or design outcome here. No invented percentages required.</p><hr><a class="back" href="#home">← Back to the homepage</a></section>
-<section class="case" id="mortgage"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 02</span></div><div class="path"><a href="#home">Home</a> / work / mortgage.html</div><h1>Where's my mortgage up to?</h1><p class="intro">Making a complicated process feel a little less mysterious.</p><p class="meta">WEST BROM / UX + UI / CASE STUDY</p><hr><h2>The problem</h2><p>There are a lot of steps in a mortgage application. People want to know where they stand and whether there's anything they need to do.</p><h2>What I did</h2><p>Explored progress patterns, clearer status labels and the hierarchy of information at each stage.</p><figure class="figure"><div class="placeholder"><strong>Your application</strong><p style="margin:13px 0 4px">✓ Application received</p><p style="margin:0 0 4px">✓ Documents reviewed</p><p style="margin:0">○ Next steps</p></div><figcaption>Illustrative placeholder for your real tracker screens and design iterations.</figcaption></figure><h2>What changed?</h2><p>Show what you learnt from research or testing, how the interface evolved and the result.</p><hr><a class="back" href="#home">← Back to the homepage</a></section>
+<section class="case" id="savings">
+<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 01</span></div>
+<div class="path"><a href="#home">Home</a> / work / app.html</div>
+<h1>Designing the new West Brom app.</h1>
+<p class="casestudyintro">Creating a joined-up mobile and desktop experience that helps customers get started, understand their accounts and manage their details with confidence.</p>
+<p class="meta">WEST BROM / PRODUCT DESIGN / DESIGN SYSTEM / MOBILE + DESKTOP</p>
+
+<dl class="case-summary">
+<div><dt>Team</dt><dd>One of three product designers</dd></div>
+<div><dt>Platforms</dt><dd>Mobile and desktop app</dd></div>
+<div><dt>Focus</dt><dd>Onboarding, accounts, home, profile and settings</dd></div>
+</dl>
+
+<h2>The challenge</h2>
+<p>Designing a new digital banking app meant creating more than a collection of screens. The experience needed to feel coherent from a customer's first visit through to everyday account management, while making important personal and financial information easy to understand.</p>
+<p>It also needed to work across mobile and desktop. The two experiences had to share the same structure and interaction patterns without simply shrinking a desktop interface onto a smaller screen.</p>
+
+<h2>My role</h2>
+<p>I was one of three designers working across the product and contributed to all areas of the app. My main focus included onboarding, account design, the home screen, and profile and settings.</p>
+<p>I also worked as a design system designer. This meant thinking beyond individual journeys and helping establish reusable components, states and behaviours that could support the wider product consistently across both platforms.</p>
+
+<h2>What I worked on</h2>
+
+<h3>Onboarding</h3>
+<p>I worked on the journeys that help customers securely access the app and confirm their information. This included identity and verification (ID&amp;V), tax status and customer details.</p>
+<p>These tasks can involve unfamiliar questions and sensitive information, so the focus was on clear sequencing, plain language and making each step feel manageable. Guidance, validation and error states needed to help customers recover without losing confidence or momentum.</p>
+
+<h3>Home and account design</h3>
+<p>The home screen needed to give customers a useful overview without overwhelming them. I worked on the hierarchy of balances, account information and actions so the most important details could be understood quickly.</p>
+<p>Account screens extended that hierarchy into more detailed views. The aim was to keep familiar information and actions in predictable places, creating a consistent route from a high-level overview into individual accounts.</p>
+
+<h3>Profile and settings</h3>
+<p>I designed areas that let customers view and manage their personal information, preferences and app settings. These screens needed to make routine changes straightforward while giving more sensitive actions the appropriate emphasis and clarity.</p>
+
+<h2>Designing across mobile and desktop</h2>
+<p>The same customer should not have to relearn the product when moving between devices. I used a shared information architecture, terminology and component language across both versions, then adapted the layout and interaction to suit each screen.</p>
+<p>Mobile prioritised touch, focused tasks and a clear reading order. Desktop used the additional space to improve scanning and show related information together. The underlying mental model remained consistent across both.</p>
+
+<h2>Building the design system</h2>
+<p>Working on the design system alongside product journeys helped connect system decisions to real customer needs. Components were designed to cover meaningful states—not just ideal examples—including errors, disabled controls, long content and different screen sizes.</p>
+<p>Reusable patterns for forms, navigation, account information and feedback reduced inconsistency and gave the three-person design team a shared foundation. It also made it easier to solve new journeys without redesigning common interactions each time.</p>
+
+<h2>The outcome</h2>
+<p>The work created a more connected foundation for the West Brom app across mobile and desktop. Onboarding, everyday account use and profile management feel like parts of the same product, supported by a design system built around real journeys.</p>
+<p>My contribution combined detailed journey design with system-level thinking: solving the screen in front of me while making sure the pattern could work elsewhere in the app.</p>
+
+<hr>
+<a class="back" href="#home">← Back to the homepage</a>
+</section>
+<section class="case" id="mortgage">
+<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 02</span></div>
+<div class="path"><a href="#home">Home</a> / work / mortgage.html</div>
+<h1>Making mortgage progress clear.</h1>
+<p class="casestudyintro">Redesigning the West Brom Mortgage Tracker to help brokers and customers understand an application's status, what happens next and what they need to do.</p>
+<p class="meta">WEST BROM / UX + UI / INFORMATION ARCHITECTURE / CASE STUDY</p>
+
+<dl class="case-summary">
+<div><dt>Audience</dt><dd>Broker, Customer and Customer via broker</dd></div>
+<div><dt>Focus</dt><dd>Progress, application details and outstanding documents</dd></div>
+<div><dt>Contribution</dt><dd>UX and UI design, interaction patterns and content hierarchy</dd></div>
+</dl>
+
+<h2>The problem</h2>
+<p>A mortgage application passes through several stages before an offer is issued. Whether they are a broker or customer, users need to know three things quickly: where the application is, what happens next and whether they need to do anything.</p>
+<p>The legacy tracker contained this information, but repeated status panels, oversized icons and text-heavy document lists made the journey difficult to scan. The redesign needed to simplify the experience while supporting three views: Broker, Customer and Customer via broker.</p>
+<ul>
+<li>Status information was repeated without adding useful detail.</li>
+<li>Completed, current and future stages were difficult to distinguish.</li>
+<li>Users could see a stage name, but not always what it meant or how long it might take.</li>
+<li>Outstanding documents were separated from a clear upload and submission flow.</li>
+</ul>
+
+<h2>One journey, three views</h2>
+<p>I created one shared structure for the mortgage journey, then adapted the language, contact routes and available actions for each audience. Brokers get the professional context needed to manage an application, direct customers get clear explanations without specialist language, and customers applying via a broker retain an obvious route back to their broker.</p>
+
+<h2>What changed</h2>
+
+<h3>A clearer application overview</h3>
+<p>The application number, applicant and relevant contact details now sit together. Where a broker relationship exists, email and telephone actions are available in context.</p>
+
+<h3>A progress timeline that is easy to scan</h3>
+<p>The large icon sequence became a compact seven-step timeline. Check marks identify completed stages, the active stage is highlighted and future stages are deliberately quieter. Labels reinforce colour, so status is never communicated by colour alone.</p>
+
+<h3>Useful detail about the current stage</h3>
+<p>Selecting a stage reveals a plain-language explanation alongside the date started, typical completion time and time already taken. This gives users enough context to understand the status and set realistic expectations.</p>
+
+<h3>Documents turned into clear tasks</h3>
+<p>The passive document list became an actionable workflow. Users can see how many items are outstanding, understand what each document is for, upload files individually and submit them when complete. Guidance and data-protection messaging remain close to the task.</p>
+
+<h2>Before and after</h2>
+<div class="case-images">
+<figure class="case-image">
+<a class="case-image-link" href="media/mortgage-tracker-before.html" target="_blank" rel="noopener" aria-label="Open the legacy mortgage tracker screenshot fitted to a new browser tab">
+<img src="media/mortgagea-tracker-before.png" width="3024" height="3656" alt="Legacy West Brom mortgage tracker dashboard" loading="lazy" decoding="async">
+</a>
+<figcaption><strong>Before:</strong> The legacy dashboard and application overview.</figcaption>
+</figure>
+<figure class="case-image">
+<a class="case-image-link" href="media/mortgage-tracker-after.html" target="_blank" rel="noopener" aria-label="Open the redesigned mortgage tracker screenshot fitted to a new browser tab">
+<img src="media/mortgagea-tracker-after.png" width="3024" height="5534" alt="Redesigned West Brom mortgage tracker with progress timeline and document upload tasks" loading="lazy" decoding="async">
+</a>
+<figcaption><strong>After:</strong> The redesigned progress and document experience.</figcaption>
+</figure>
+</div>
+
+<h3>Mobile screens</h3>
+<div class="case-images case-images-mobile">
+<figure class="case-image">
+<div class="case-mobile-scroll" tabindex="0" aria-label="Scrollable legacy mobile mortgage tracker screenshot">
+<img src="media/mobile-mortgage-tracker-before.png" width="1000" height="7436" alt="Legacy West Brom mortgage tracker on mobile" loading="lazy" decoding="async">
+</div>
+<figcaption><strong>Before:</strong> The legacy mobile tracker.</figcaption>
+</figure>
+<figure class="case-image">
+<div class="case-mobile-scroll" tabindex="0" aria-label="Scrollable redesigned mobile mortgage tracker screenshot">
+<img src="media/mobile-mortgage-tracker-after.png" width="1000" height="7784" alt="Redesigned West Brom mortgage tracker on mobile" loading="lazy" decoding="async">
+</div>
+<figcaption><strong>After:</strong> The redesigned mobile tracker.</figcaption>
+</figure>
+</div>
+
+<table class="comparison">
+<thead><tr><th>Legacy tracker</th><th>Redesigned tracker</th></tr></thead>
+<tbody>
+<tr><td>Repeated dashboard panels</td><td>Three clear areas: details, progress and documents</td></tr>
+<tr><td>Large icons with limited state detail</td><td>Compact timeline with clear completed, current and future states</td></tr>
+<tr><td>Status name with little context</td><td>Explanation, start date and timing information</td></tr>
+<tr><td>Passive document list</td><td>Document descriptions, upload actions and a clear submission point</td></tr>
+</tbody>
+</table>
+
+<h2>The outcome</h2>
+<p>The redesigned tracker is calmer, easier to scan and more useful across all three views. It brings status, expectations and actions together, helping brokers and customers understand what has happened, what is happening now and what they need to do next.</p>
+<p>The next step would be to validate this through task-based testing across each audience, alongside document completion rates and status-related support enquiries.</p>
+
+<hr>
+<a class="back" href="#home">← Back to the homepage</a>
+</section>
 <section class="case" id="agency"><div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 03</span></div><div class="path"><a href="#home">Home</a> / work / clevercherry.html</div><h1>Before all the UX acronyms.</h1><p class="intro">A bit of everything, and a lot of learning.</p><p class="meta">CLEVERCHERRY / VISUAL DESIGN + WEB + PRINT</p><hr><h2>The work</h2><p>At Clevercherry I worked across websites, visual identities, print and digital design, honing my craft alongside more experienced designers.</p><h2>The good stuff</h2><p>Put your strongest two or three projects here, with big images and short explanations of the thinking behind them.</p><figure class="figure"><div class="placeholder"><strong>Selected visual project</strong><div class="line" style="width:85%"></div><div class="line" style="width:65%"></div></div><figcaption>Replace with a genuine project image.</figcaption></figure><hr><a class="back" href="#home">← Back to the homepage</a></section>
 </main></body></html>
