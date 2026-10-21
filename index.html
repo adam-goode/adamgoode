@@ -303,6 +303,80 @@
     font-size: 13px;
   }
 
+  .mobile-screen-grid {
+    display: flex;
+    width: min(calc(50vw + 50%), 2010px);
+    max-width: none;
+    gap: 24px;
+    margin: 18px 0 30px;
+    padding: 0 40px 12px 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 1px;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #888 transparent;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-screen {
+    flex: 0 0 clamp(140px, calc((100vw - 64px) / 3), 209px);
+    margin: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .mobile-screen-grid:focus-visible {
+    outline: 2px solid #003fbd;
+    outline-offset: 4px;
+  }
+
+  .mobile-screen-placeholder {
+    display: grid;
+    aspect-ratio: 393 / 852;
+    place-items: center;
+    padding: 12px;
+    border: 1px dashed #888;
+    background: repeating-linear-gradient(
+      -45deg,
+      #f1f1ed,
+      #f1f1ed 10px,
+      #e8e8e3 10px,
+      #e8e8e3 20px
+    );
+    color: #555;
+    font: 11px/1.5 "Courier New", monospace;
+    text-align: center;
+  }
+
+  .mobile-screen figcaption {
+    margin-top: 7px;
+    color: #555;
+    font-size: 11px;
+  }
+
+  .mobile-screen-media {
+    aspect-ratio: 393 / 852;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #f1f1ed;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+  }
+
+  .mobile-screen-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mobile-screen-media:focus-visible {
+    outline: 2px solid #003fbd;
+    outline-offset: 3px;
+  }
+
   .case-images {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -490,6 +564,7 @@
   :root[data-theme="dark"] .file p,
   :root[data-theme="dark"] .figure figcaption,
   :root[data-theme="dark"] .case-image figcaption,
+  :root[data-theme="dark"] .mobile-screen figcaption,
   :root[data-theme="dark"] .stamp {
     color: #aaa;
   }
@@ -539,11 +614,32 @@
     border-left-color: #8ab4ff;
   }
 
+  :root[data-theme="dark"] .mobile-screen-placeholder {
+    color: #aaa;
+    border-color: #666;
+    background: repeating-linear-gradient(
+      -45deg,
+      #242424,
+      #242424 10px,
+      #202020 10px,
+      #202020 20px
+    );
+  }
+
+  :root[data-theme="dark"] .mobile-screen-media {
+    border-color: #666;
+    background: #242424;
+  }
+
   :root[data-theme="dark"] .theme-toggle:hover {
     background: #403b1c;
   }
 
   @media (max-width: 500px) {
+    .mobile-screen {
+      flex-basis: 74vw;
+    }
+
     .wrap {
       padding: 22px 18px 48px;
     }
@@ -590,7 +686,7 @@
 <button class="theme-toggle" type="button" aria-pressed="false">◐ Dark mode</button>
 <main class="wrap">
 <section id="home">
-<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>PERSONAL HOMEPAGE / EST. 2026</span></div>
+<div class="topline mono"><span>adamgoode.pages.dev</span><span>PERSONAL HOMEPAGE / EST. 2026</span></div>
 <h1>Adam Goode<span class="dot">.</span></h1>
 <p class="intro">I design things for screens, paper and the people on the other side of them.</p>
 <nav aria-label="Main navigation"><a href="#about">About me</a><a href="#work">Selected work</a><a href="#contact">Say hello</a></nav>
@@ -601,7 +697,7 @@
 <div class="directory">
 <div class="file"><span class="filetype">01 / HTML</span><div><a href="#savings">The New West Brom app</a><p>West Brom — Onboarding, accounts and everyday banking across mobile and desktop.</p></div></div>
 <div class="file"><span class="filetype">02 / HTML</span><div><a href="#mortgage">West Brom Mortgage Tracker redesign</a><p>West Brom — Helping people know what's happening, and what happens next.</p></div></div>
-<div class="file"><span class="filetype">03 / HTML</span><div><a href="#agency">West Brom Savings Account redesign</a><p>Clevercherry — Brands, websites, print and learning to make things look properly good.</p></div></div>
+<div class="file"><span class="filetype">03 / SOON</span><div><strong>More case studies are coming soon.</strong><p>I've also worked on projects for clients including Subaru, Ducati, Yale DWS, Peveril Homes and West Midlands Police, among many others.</p></div></div>
 </div>
 </section>
 
@@ -611,7 +707,7 @@
 <hr><footer class="footer meta"><span>© Adam Goode, 2026</span><span class="stamp">LAST UPDATED: OCT 2026</span></footer>
 </section>
 <section class="case" id="savings">
-<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 01</span></div>
+<div class="topline mono"><span>adamgoode.pages.dev</span><span>WORK / 01</span></div>
 <div class="path"><a href="#home">Home</a> / work / app.html</div>
 <h1>Designing the new West Brom app.</h1>
 <p class="casestudyintro">Creating a joined-up mobile and desktop experience that helps customers get started, understand their accounts and manage their details with confidence.</p>
@@ -626,28 +722,75 @@
 
 <h2 id="app-challenge">The challenge</h2>
 <p>Designing a new digital banking app meant creating more than a collection of screens. The experience needed to feel coherent from a customer's first visit through to everyday account management, while making important personal and financial information easy to understand.</p>
-<p>It also needed to work across mobile and desktop. The two experiences had to share the same structure and interaction patterns without simply shrinking a desktop interface onto a smaller screen.</p>
+<p>It also needed to work across mobile and desktop. The two experiences had to share the same structure and interaction patterns without just shrinking a desktop interface onto a smaller screen.</p>
 
 <h2 id="app-role">My role</h2>
-<p>I was one of three designers working across the product and contributed to all areas of the app. My main focus included onboarding, account design, the home screen, and profile and settings.</p>
-<p>I also worked as a design system designer. This meant moving between detailed feature work and the shared foundations behind it: spotting repeatable patterns, identifying gaps and contributing components, states and guidance that the whole team could use.</p>
+<p>I was one of three designers working across the product and contributed to all areas of the app. My main focus included onboarding, account screen design, home screen design, and profile and settings.</p>
+<p>I was also a contributer to the design system. This meant moving between the screen work and the design system behind it; spotting repeatable patterns, identifying gaps and contributing components, states and guidance to the design system designer for them to implement and publish.</p>
 
 <h2 id="app-work">What I worked on</h2>
 
 <h3>Onboarding</h3>
-<p>I worked on the journeys that help customers securely access the app and confirm their information. This included identity and verification (ID&amp;V), tax status and customer details.</p>
-<p>These tasks can involve unfamiliar questions and sensitive information, so the focus was on clear sequencing, plain language and making each step feel manageable. Guidance, validation and error states needed to help customers recover without losing confidence or momentum.</p>
+<p>I worked across five key areas of the customer journey: <i>registration, customer details, product application, identity and verification (ID&V), and account preferences.</i> Together, these formed the onboarding experience, from a customer first registering through to applying for products and setting their account preferences.</p>
+
+<p>Each part came with its own UX challenges. Registration needed to feel quick and straightforward without compromising security, while customer details and product applications involved collecting quite a lot of information without making the process feel overwhelming. ID&V introduced additional complexity, with customers needing to complete the autocapture for an image of their ID and a selfie for security. Account preferences, on the other hand, needed to make it easy for customers to review and manage their information once they were up and running.</p>
+
+<p>A big part of my work was looking at how these journeys fitted together. This meant thinking carefully about the order in which information was requested, what customers needed to know at each stage, and how to reduce unnecessary steps or repetition.</p>
+
+<p>I also spent time considering the less straightforward scenarios, such as what happens when someone enters incorrect information, fails a validation check or needs to return to something later. Clear error messages, helpful guidance, sensible defaults and consistent interaction patterns were all important in making the experience feel coheisive and well put together.</p>
+
+<p>Ultimately, the aim was to make what could be quite complex financial processes feel simple and manageable, giving customers a clear sense of where they were, what was expected of them and what would happen next.</p>
+<div class="mobile-screen-grid" tabindex="0" role="region" aria-label="Onboarding mobile screens. Scroll horizontally to view more.">
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/Password_Error.png" width="393" height="852" alt="Registration password screen showing validation requirements and an error message" loading="lazy" decoding="async"></div><figcaption>Password validation</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/phone.png" width="393" height="852" alt="Registration screen asking for a UK mobile phone number" loading="lazy" decoding="async"></div><figcaption>Phone verification</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/ID%26V_intro.png" width="393" height="852" alt="Identity verification introduction explaining the required ID document and selfie" loading="lazy" decoding="async"></div><figcaption>Identity and verification</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable account type selection screen"><img src="media/app/product_type.png" width="393" height="1420" alt="Product application screen listing savings account types" loading="lazy" decoding="async"></div><figcaption>Choosing an account type</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable fixed rate account list"><img src="media/app/product_list.png" width="393" height="1800" alt="Product application screen listing fixed rate savings accounts" loading="lazy" decoding="async"></div><figcaption>Comparing products</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/tax_residency.png" width="393" height="885" alt="Product application screen asking about the customer's tax residency" loading="lazy" decoding="async"></div><figcaption>Tax residency</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/interest.png" width="393" height="852" alt="Account preference screen confirming where and how often interest is paid" loading="lazy" decoding="async"></div><figcaption>Interest preferences</figcaption></figure>
+</div>
 
 <h3>Home and account design</h3>
 <p>The home screen needed to give customers a useful overview without overwhelming them. I worked on the hierarchy of balances, account information and actions so the most important details could be understood quickly.</p>
 <p>Account screens extended that hierarchy into more detailed views. The aim was to keep familiar information and actions in predictable places, creating a consistent route from a high-level overview into individual accounts.</p>
+<div class="mobile-screen-grid" tabindex="0" role="region" aria-label="Home and account mobile screens. Scroll horizontally to view more.">
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/home.png" width="393" height="852" alt="App home screen showing total savings, interest earned and an Easy Access account" loading="lazy" decoding="async"></div><figcaption>Home screen</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/la_account_detail.png" width="393" height="852" alt="Limited Access Saver account detail screen showing balance, withdrawals and recent activity" loading="lazy" decoding="async"></div><figcaption>Limited Access Saver</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/isa_account_detail.png" width="393" height="852" alt="Fixed Rate ISA account detail screen showing balance, ISA allowance and recent activity" loading="lazy" decoding="async"></div><figcaption>Fixed Rate ISA</figcaption></figure>
+</div>
 
 <h3>Profile and settings</h3>
-<p>I designed areas that let customers view and manage their personal information, preferences and app settings. These screens needed to make routine changes straightforward while giving more sensitive actions the appropriate emphasis and clarity.</p>
+<p>I worked on the areas of the app that allow customers to view and manage their personal information, account preferences and settings. The main UX challenge was making these features easy to find, understand and use, particularly as some actions were much more important or sensitive than others.</p>
+
+<p>A key focus was on information architecture, making sure settings were grouped logically and labelled in a way that made sense to customers, rather than relying on internal terminology. I also looked at how customers moved between different areas, aiming to reduce unnecessary navigation and make common tasks as straightforward as possible.</p>
+
+<p>For more sensitive actions and important account changes, we introduced biometric authentication to give customers a quick and secure way to verify their identity. Where biometrics hadn't been set up, customers could instead use a one-time passcode (OTP). From a UX perspective, the challenge was balancing security with ease of use, making sure these additional checks felt like a natural part of the journey rather than an unnecessary barrier. Clear instructions, feedback and error handling helped customers understand what was happening and how to move forward.</p>
+
+<p>The overall aim was to create a familiar, predictable experience that gave customers confidence and control over their account, whether they were making a quick change or managing something more important.</p>
+<div class="mobile-screen-grid" tabindex="0" role="region" aria-label="Profile and settings mobile screens. Scroll horizontally to view more.">
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable profile and settings screen"><img src="media/app/settings.png" width="393" height="1017" alt="Profile and settings overview with links to personal information, messages, documents and account preferences" loading="lazy" decoding="async"></div><figcaption>Profile and settings</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable personal information screen"><img src="media/app/personal-info.png" width="393" height="1446" alt="Personal information screen showing editable contact, address and employment details" loading="lazy" decoding="async"></div><figcaption>Personal information</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable nominated account screen"><img src="media/app/nominated-account.png" width="393" height="1056" alt="Nominated account screen confirming the verified account used for withdrawals" loading="lazy" decoding="async"></div><figcaption>Nominated account</figcaption></figure>
+</div>
 
 <h3 id="app-propositions">Savings propositions</h3>
-<p>Alongside the core app, I worked on proposition ideas including Savings Goals and Deposit Saver. These explored how the app could go beyond account servicing and help customers make their saving feel more purposeful.</p>
-<p>I developed customer journeys and interface concepts across mobile and desktop, turning early ideas into something tangible enough to discuss, challenge and refine. This helped expose the questions behind each proposition before committing to a final solution.</p>
+<p>Alongside the core app, I worked on early proposition concepts including Savings Goals and Deposit Saver, exploring how we could help customers save towards something meaningful rather than simply manage their accounts.</p>
+
+<p>My focus was on bringing these ideas to life through both UX and UI design. I created visually engaging landing screens that introduced each proposition, clearly explained how it worked and helped customers understand the benefits before getting started. It was important to strike the right balance between creating something that looked appealing and making sure the experience was simple, intuitive and easy to use.</p>
+
+<p>I also explored the wider customer journeys across mobile and desktop, looking at how customers would get started, interact with the features and track their progress. This involved thinking carefully about information hierarchy, navigation, visual feedback and how to break down potentially unfamiliar concepts into manageable steps.</p>
+
+<p>The designs helped turn early ideas into tangible experiences that could be shared, discussed and refined, while exploring how thoughtful UX and strong visual design could make saving feel more accessible, engaging and rewarding.</p>
+<div class="mobile-screen-grid" tabindex="0" role="region" aria-label="Savings proposition mobile screens. Scroll horizontally to view more.">
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/goals.png" width="393" height="852" alt="Savings Goals overview introducing goal-based saving" loading="lazy" decoding="async"></div><figcaption>Savings Goals</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable Savings Goal setup screen"><img src="media/app/goals-setup.png" width="393" height="912" alt="Savings Goal setup screen for entering goal details" loading="lazy" decoding="async"></div><figcaption>Goal setup</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable Savings Goal validation screen"><img src="media/app/goals-validate.png" width="393" height="1130" alt="Savings Goal setup screen showing validation guidance" loading="lazy" decoding="async"></div><figcaption>Goal validation</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable completed Savings Goal screen"><img src="media/app/goals-complete.png" width="393" height="960" alt="Savings Goal completion screen confirming the new goal" loading="lazy" decoding="async"></div><figcaption>Goal created</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/deposit-splitter.png" width="393" height="852" alt="Deposit Splitter overview explaining how incoming deposits can be divided" loading="lazy" decoding="async"></div><figcaption>Deposit Splitter</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media"><img src="media/app/deposit-splitter-validation.png" width="393" height="853" alt="Deposit Splitter screen showing allocation validation guidance" loading="lazy" decoding="async"></div><figcaption>Splitter validation</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable edited Deposit Splitter screen"><img src="media/app/deposit-splitter-edited.png" width="393" height="1222" alt="Deposit Splitter screen showing edited account allocations" loading="lazy" decoding="async"></div><figcaption>Editing the split</figcaption></figure>
+<figure class="mobile-screen"><div class="mobile-screen-media" tabindex="0" aria-label="Scrollable completed Deposit Splitter screen"><img src="media/app/deposit-splitter-complete.png" width="393" height="1316" alt="Deposit Splitter completion screen confirming the account allocations" loading="lazy" decoding="async"></div><figcaption>Splitter complete</figcaption></figure>
+</div>
 
 <h2>Designing across mobile and desktop</h2>
 <p>The same customer should not have to relearn the product when moving between devices. I used a shared information architecture, terminology and component language across both versions, then adapted the layout and interaction to suit each screen.</p>
@@ -655,17 +798,24 @@
 
 <h2 id="app-system">Building the design system</h2>
 <p>My design system contribution was closely connected to live product work. When a journey exposed a recurring pattern or a gap in the library, I would consider whether an existing component could be extended or whether a new shared pattern was needed.</p>
-<p>I contributed reusable patterns for forms, navigation, account information and feedback, considering interaction states, responsive behaviour, content limits and accessibility. Capturing the intended use—not only the finished component—helped the three-person design team apply patterns consistently and reduced one-off solutions across the app.</p>
+<p>I contributed reusable patterns for forms, navigation, account information and feedback, considering interaction states, responsive behaviour, content limits and accessibility. Capturing the intended use; not only the finished component, helped the team apply patterns consistently and reduced one off solutions across the app.</p>
 
 <h2 id="app-outcome">The outcome</h2>
-<p>The work created a more connected foundation for the West Brom app across mobile and desktop. Onboarding, everyday account use and profile management feel like parts of the same product, supported by a design system built around real journeys.</p>
-<p>My contribution combined detailed journey design with system-level thinking: solving the screen in front of me while making sure the pattern could work elsewhere in the app.</p>
+<p>Although the app isn't live yet, we've made good progress in simplifying some of the more complex customer journeys, particularly registration, identity verification and product applications. By breaking these processes into smaller, more manageable steps, improving the way information is presented and introducing clearer guidance and error handling, we've aimed to make it easier for customers to complete tasks without confusion or unnecessary friction.</p>
+
+<p>We've also established a more consistent experience across the app, with reusable components and interaction patterns that carry through from onboarding to account management. This includes consistent form behaviours, validation, navigation and security checks, helping customers understand what to expect as they move between different journeys.</p>
+
+<p>Early usability and accessibility testing has shown promising results, particularly in how customers understand and navigate the journeys. The testing is also helping us identify areas where instructions, interactions and accessibility can be improved before launch.</p>
+
+<p>From a UI perspective, I've helped create a cohesive visual language across mobile and desktop, with clearer information hierarchy, consistent layouts and more considered use of typography and spacing. The result is a product that's beginning to feel much more joined up, with UX and UI working together to make everyday banking tasks simpler.</p>
+
+<p>There's still more to learn once the app is live, but the work so far has given us a stronger foundation to build on, with early feedback helping shape the next round of improvements.</p>
 
 <hr>
 <a class="back" href="#home">← Back to the homepage</a>
 </section>
 <section class="case" id="mortgage">
-<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 02</span></div>
+<div class="topline mono"><span>adamgoode.pages.dev</span><span>WORK / 02</span></div>
 <div class="path"><a href="#home">Home</a> / work / mortgage.html</div>
 <h1>Making mortgage progress clear.</h1>
 <p class="casestudyintro">Redesigning the West Brom Mortgage Tracker to help brokers and customers understand an application's status, what happens next and what they need to do.</p>
@@ -755,7 +905,7 @@
 <a class="back" href="#home">← Back to the homepage</a>
 </section>
 <section class="case" id="agency">
-<div class="topline mono"><span>ADAMGOODE.CO.UK</span><span>WORK / 03</span></div>
+<div class="topline mono"><span>adamgoode.pages.dev</span><span>WORK / 03</span></div>
 <div class="path"><a href="#home">Home</a> / work / clevercherry.html</div>
 <h1>Before all the UX acronyms.</h1>
 <p class="intro">A bit of everything, and a lot of learning.</p>
